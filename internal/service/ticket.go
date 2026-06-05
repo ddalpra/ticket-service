@@ -158,30 +158,20 @@ func (s *TicketService) Assign(ctx context.Context, id, toUserID uuid.UUID, call
 
 // SetPriority aggiorna la priorità del ticket.
 func (s *TicketService) SetPriority(ctx context.Context, id uuid.UUID, p string, caller *ent.User) (*ent.Ticket, error) {
-	// 1. Convertiamo la stringa 'p' nel tipo definito da Ent
-	priorityValue := ticket.Priority(p)
-
-	// 2. Passiamo il valore al validatore (che restituisce solo un errore)
-	if err := ticket.PriorityValidator(priorityValue); err != nil {
+	pEnum, err := ticket.PriorityValidator(ticket.Priority(p))
+	if err != nil {
 		return nil, apperrors.BadRequest("priorità non valida: usa LOW, MEDIUM, HIGH")
 	}
-
-	// 3. Passiamo direttamente 'priorityValue' al repository, senza bisogno di asserzioni
-	return s.repo.SetPriority(ctx, id, priorityValue, caller.ID)
+	return s.repo.SetPriority(ctx, id, pEnum.(ticket.Priority), caller.ID)
 }
 
 // SetState aggiorna lo state_job del ticket.
 func (s *TicketService) SetState(ctx context.Context, id uuid.UUID, sj string, caller *ent.User) (*ent.Ticket, error) {
-	// 1. Convertiamo la stringa 'sj' nel tipo StateJob definito da Ent
-	stateValue := ticket.StateJob(sj)
-
-	// 2. Passiamo il valore al validatore (che restituisce solo un errore)
-	if err := ticket.StateJobValidator(stateValue); err != nil {
+	sjEnum, err := ticket.StateJobValidator(ticket.StateJob(sj))
+	if err != nil {
 		return nil, apperrors.BadRequest("stato non valido")
 	}
-
-	// 3. Passiamo direttamente 'stateValue' al repository
-	return s.repo.SetState(ctx, id, stateValue, caller.ID)
+	return s.repo.SetState(ctx, id, sjEnum.(ticket.StateJob), caller.ID)
 }
 
 // AddComment aggiunge un commento al ticket.

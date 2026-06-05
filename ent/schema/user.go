@@ -44,9 +44,5 @@ func (User) Edges() []ent.Edge {
 		// Ticket aggiornati da questo utente
 		edge.To("updated_tickets", Ticket.Type).
 			StorageKey(edge.Column("updated_by_id")),
-		// Aggiungi questa riga per completare la relazione:
-        	edge.To("attachments", Attachment.Type),
-        	// Commenti scritti da questo utente (Risolve l'errore Comment che mancava)
-		edge.To("comments", Comment.Type),
 	}
 }

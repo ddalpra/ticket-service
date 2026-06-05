@@ -5,15 +5,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/google/uuid"
 	"ticket-service/ent"
-	
-	// IMPORT FONDAMENTALI: I sotto-pacchetti generati da Ent
 	"ticket-service/ent/comment"
 	"ticket-service/ent/company"
 	"ticket-service/ent/servicecenter"
 	"ticket-service/ent/ticket"
 	"ticket-service/ent/user"
+
+	"github.com/google/uuid"
 )
 
 type TicketRepository struct {
@@ -32,7 +31,6 @@ func withEdges(q *ent.TicketQuery) *ent.TicketQuery {
 		WithAssignedTo().
 		WithCreatedBy().
 		WithComments(func(cq *ent.CommentQuery) {
-			// comment.FieldOrderComment ora viene riconosciuto grazie all'import
 			cq.WithAttachments().WithAuthor().Order(ent.Asc(comment.FieldOrderComment))
 		}).
 		WithAttachments()
@@ -63,7 +61,7 @@ func (r *TicketRepository) FindUnassignedByServiceCenter(ctx context.Context, sc
 		Where(
 			ticket.HasServiceCenterWith(servicecenter.ID(scID)),
 			ticket.Not(ticket.HasAssignedTo()),
-			ticket.StateJobNEQ(ticket.StateJobCHIUSA), // ticket.StateJobCHIUSA è corretto
+			ticket.StateJobNEQ(ticket.StateJobCHIUSA),
 		)).
 		All(ctx)
 }

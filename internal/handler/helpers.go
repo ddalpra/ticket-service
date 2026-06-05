@@ -3,10 +3,11 @@ package handler
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"ticket-service/ent"
 	"ticket-service/internal/middleware"
 	"ticket-service/pkg/apperrors"
+
+	"github.com/gin-gonic/gin"
 )
 
 // currentUser recupera l'utente corrente dal contesto Gin.

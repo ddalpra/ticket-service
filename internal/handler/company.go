@@ -3,10 +3,11 @@ package handler
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"ticket-service/internal/repository"
 	"ticket-service/internal/service"
+
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type CompanyHandler struct {

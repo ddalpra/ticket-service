@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/google/uuid"
 	"ticket-service/ent"
 	"ticket-service/ent/user"
+
+	"github.com/google/uuid"
 )
 
 type UserRepository struct {

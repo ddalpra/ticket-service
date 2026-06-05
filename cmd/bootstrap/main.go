@@ -16,8 +16,8 @@ import (
 	"os"
 
 	"entgo.io/ent/dialect/sql"
-	_ "github.com/lib/pq"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 
 	"ticket-service/ent"
 	"ticket-service/ent/user"

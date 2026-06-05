@@ -3,9 +3,10 @@ package handler
 import (
 	"net/http"
 
+	"ticket-service/internal/service"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"ticket-service/internal/service"
 )
 
 type UserHandler struct {

@@ -4,9 +4,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gin-gonic/gin"
 	"ticket-service/internal/auth"
 	"ticket-service/internal/repository"
+
+	"github.com/gin-gonic/gin"
 )
 
 const (

@@ -3,11 +3,12 @@ package service
 import (
 	"context"
 
-	"github.com/google/uuid"
 	"ticket-service/ent"
 	"ticket-service/internal/repository"
 	"ticket-service/pkg/apperrors"
 	"ticket-service/pkg/keycloak"
+
+	"github.com/google/uuid"
 )
 
 type UserService struct {

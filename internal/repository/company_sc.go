@@ -4,10 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/google/uuid"
 	"ticket-service/ent"
 	"ticket-service/ent/company"
 	"ticket-service/ent/servicecenter"
+
+	"github.com/google/uuid"
 )
 
 // ── Company ───────────────────────────────────────────────────────────────────

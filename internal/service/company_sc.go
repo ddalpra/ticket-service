@@ -3,10 +3,11 @@ package service
 import (
 	"context"
 
-	"github.com/google/uuid"
 	"ticket-service/ent"
 	"ticket-service/internal/repository"
 	"ticket-service/pkg/apperrors"
+
+	"github.com/google/uuid"
 )
 
 // ── CompanyService ────────────────────────────────────────────────────────────
