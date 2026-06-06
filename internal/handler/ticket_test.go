@@ -8,11 +8,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"ticket-service//ent"
-	entticket "ticket-service//ent/ticket"
-	"ticket-service//internal/handler"
-	"ticket-service//internal/middleware"
-	"ticket-service//internal/service"
+	"ticket-service/ent"
+	entticket "ticket-service/ent/ticket"
+	"ticket-service/internal/handler"
+	"ticket-service/internal/middleware"
+	"ticket-service/internal/service"
 	"ticket-service/pkg/apperrors"
 
 	"github.com/gin-gonic/gin"
